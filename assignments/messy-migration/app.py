@@ -12,7 +12,7 @@ def create_app():
     app.config.from_object(Config)
     
     # Configure logging
-    if app.config['FLASK_ENV'] != 'development':
+    if app.config.get('FLASK_ENV') != 'development':
         logging.basicConfig(
             level=logging.INFO,
             format='%(asctime)s %(levelname)s: %(message)s'
@@ -20,13 +20,13 @@ def create_app():
     
     # Initialize rate limiter
     limiter = Limiter(
-        app,
         key_func=get_remote_address,
-        default_limits=[app.config['RATELIMIT_DEFAULT']]
+        default_limits=[app.config.get('RATELIMIT_DEFAULT', '100 per hour')]
     )
+    limiter.init_app(app)
     
     # Initialize models
-    user_model = User(app.config['DATABASE_PATH'])
+    user_model = User(app.config.get('DATABASE_PATH', 'users.db'))
     
     # Register blueprints
     user_routes = create_user_routes(user_model, limiter)
@@ -36,4 +36,4 @@ def create_app():
 
 if __name__ == '__main__':
     app = create_app()
-    app.run(host='0.0.0.0', port=5009, debug=(app.config['FLASK_ENV'] == 'development'))
+    app.run(host='0.0.0.0', port=5000, debug=(app.config.get('FLASK_ENV') == 'development'))

@@ -23,7 +23,7 @@
 
 ## Changes Made and Justifications
 
-### 1. Security Improvements (25%)
+### 1. Security Improvements 
 
 **Parameterized Queries**
 - Replaced all string formatting with parameterized queries using `?` placeholders
@@ -49,7 +49,7 @@
 - Added proper error messages without exposing system internals
 - Environment-based configuration for sensitive data
 
-### 2. Code Organization (25%)
+### 2. Code Organization 
 
 **Modular Architecture**
 - Split code into logical modules: models, routes, utils, config
@@ -75,7 +75,7 @@
 └── .env            # Environment variables
 ```
 
-### 3. Best Practices Implementation (25%)
+### 3. Best Practices Implementation 
 
 **Proper Error Handling**
 - Comprehensive try-catch blocks around all operations
@@ -106,7 +106,7 @@
 - Row factory for dictionary-like access to results
 - Connection pooling through context managers
 
-### 4. Testing and Documentation (25%)
+### 4. Testing and Documentation 
 
 **Unit Tests**
 - Created comprehensive test suite for User model
