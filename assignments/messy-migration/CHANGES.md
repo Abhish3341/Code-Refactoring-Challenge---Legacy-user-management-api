@@ -138,6 +138,38 @@
 3. **Database**: Kept SQLite for simplicity, though production would benefit from PostgreSQL
 4. **Validation**: Implemented essential validation; more complex business rules could be added
 
+### API Testing Integration
+## Postman Collection Export and Usage
+The Postman API test collection was exported as a JSON file and added to the project repository for streamlined API verification.
+
+The collection file is located at:
+
+
+postman/postman_api_tests.json
+This allows consistent API test definitions to be version-controlled alongside the project codebase.
+
+## How to Use the Postman Collection
+To import the collection into Postman:
+Open Postman → Click Import → Select the postman_api_tests.json file from the postman/ folder.
+
+To run tests from the terminal using Newman (a command-line runner for Postman):
+Ensure Newman is installed globally via npm:
+
+bash
+npm install -g newman
+Then run:
+
+bash
+newman run postman/postman_api_tests.json
+Alternatively, run the API tests as part of automated pipelines or npm scripts using the above command.
+
+## Benefits
+Having the Postman collection in the repo facilitates easy sharing and collaboration among developers.
+
+Enables integration with CI/CD to automate API test verification steps.
+
+Ensures API tests stay in sync with application changes through version control.
+
 ## What I Would Do With More Time
 
 ### Immediate Improvements (Next 2-3 hours)
